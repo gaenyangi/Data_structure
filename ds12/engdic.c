@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<stdlib.h> // Æ®¸® ±¸Á¶¸¦ ÀÌ¿ëÇÑ ¿µ¾î»çÀü ÇÁ·Î±×·¥. Æ®¸® ±¸Á¶´Â »ğÀÔ°ú »èÁ¦ ¸ğµÎ O(logn)À¸·Î ¿¬°á¸®½ºÆ®³ª ¹è¿­¿¡ ºñÇØ È¿À²ÀûÀÌ±â ¶§¹®¿¡ ÀÌ°ÍÀ¸·Î ±¸Çö. 
+#include<stdlib.h> // íŠ¸ë¦¬ êµ¬ì¡°ë¥¼ ì´ìš©í•œ ì˜ì–´ì‚¬ì „ í”„ë¡œê·¸ë¨. íŠ¸ë¦¬ êµ¬ì¡°ëŠ” ì‚½ì…ê³¼ ì‚­ì œ ëª¨ë‘ O(logn)ìœ¼ë¡œ ì—°ê²°ë¦¬ìŠ¤íŠ¸ë‚˜ ë°°ì—´ì— ë¹„í•´ íš¨ìœ¨ì ì´ê¸° ë•Œë¬¸ì— ì´ê²ƒìœ¼ë¡œ êµ¬í˜„. 
 
 typedef struct Node {
 	char key[50];
@@ -7,9 +7,9 @@ typedef struct Node {
 	struct Node* left, * right;
 }Node;
 
-// ÀÌÁøÅ½»öÆ®¸®¿¡ »õ·Î¿î ³ëµå¸¦ »ğÀÔÇÏ´Â ÇÔ¼ö
+// ì´ì§„íƒìƒ‰íŠ¸ë¦¬ì— ìƒˆë¡œìš´ ë…¸ë“œë¥¼ ì‚½ì…í•˜ëŠ” í•¨ìˆ˜
 struct Node* insertNode(struct Node* node, char key[], char meaning[]) {
-	// ³ëµå°¡ NULLÀÌ¸é »õ·Î¿î ³ëµå »ı¼º
+	// ë…¸ë“œê°€ NULLì´ë©´ ìƒˆë¡œìš´ ë…¸ë“œ ìƒì„±
 	if (node == NULL) {
 		struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
 		strcpy(temp->key, key);
@@ -18,30 +18,30 @@ struct Node* insertNode(struct Node* node, char key[], char meaning[]) {
 		temp->right = NULL;
 		return temp;
 	}
-	// Å° °ªÀÌ ´õ ÀÛÀ¸¸é ¿ŞÂÊ ÀÚ½Ä ³ëµå·Î ÀÌµ¿
+	// í‚¤ ê°’ì´ ë” ì‘ìœ¼ë©´ ì™¼ìª½ ìì‹ ë…¸ë“œë¡œ ì´ë™
 	if (strcmp(key, node->key) < 0)
 		node->left = insertNode(node->left, key, meaning);
-	// Å° °ªÀÌ ´õ Å©¸é ¿À¸¥ÂÊ ÀÚ½Ä ³ëµå·Î ÀÌµ¿
+	// í‚¤ ê°’ì´ ë” í¬ë©´ ì˜¤ë¥¸ìª½ ìì‹ ë…¸ë“œë¡œ ì´ë™
 	else if (strcmp(key, node->key) > 0)
 		node->right = insertNode(node->right, key, meaning);
 	return node;
 }
 
-// ÀÌÁøÅ½»öÆ®¸®¿¡¼­ ³ëµå¸¦ °Ë»öÇÏ´Â ÇÔ¼ö
+// ì´ì§„íƒìƒ‰íŠ¸ë¦¬ì—ì„œ ë…¸ë“œë¥¼ ê²€ìƒ‰í•˜ëŠ” í•¨ìˆ˜
 struct Node* searchNode(struct Node* node, char key[]) {
-	// ³ëµå°¡ NULLÀÌ°Å³ª Å° °ª°ú ÀÏÄ¡ÇÏ¸é ÇØ´ç ³ëµå ¹İÈ¯
+	// ë…¸ë“œê°€ NULLì´ê±°ë‚˜ í‚¤ ê°’ê³¼ ì¼ì¹˜í•˜ë©´ í•´ë‹¹ ë…¸ë“œ ë°˜í™˜
 	if (node == NULL || strcmp(node->key, key) == 0)
 		return node;
-	// Å° °ªÀÌ ´õ ÀÛÀ¸¸é ¿ŞÂÊ ÀÚ½Ä ³ëµå¿¡¼­ °Ë»ö
+	// í‚¤ ê°’ì´ ë” ì‘ìœ¼ë©´ ì™¼ìª½ ìì‹ ë…¸ë“œì—ì„œ ê²€ìƒ‰
 	if (strcmp(key, node->key) < 0)
 		return searchNode(node->left, key);
-	// Å° °ªÀÌ ´õ Å©¸é ¿À¸¥ÂÊ ÀÚ½Ä ³ëµå¿¡¼­ °Ë»ö
+	// í‚¤ ê°’ì´ ë” í¬ë©´ ì˜¤ë¥¸ìª½ ìì‹ ë…¸ë“œì—ì„œ ê²€ìƒ‰
 	else
 		return searchNode(node->right, key);
 }
 
 int main() {
-	struct Node* root = NULL; // ÀÌÁøÅ½»öÆ®¸®ÀÇ ·çÆ® ³ëµå ´Ü¾î¸¦ ÀÔ·Â¹Ş¾Æ ÀÌÁøÅ½»öÆ®¸®¿¡ »ğÀÔ
+	struct Node* root = NULL; // ì´ì§„íƒìƒ‰íŠ¸ë¦¬ì˜ ë£¨íŠ¸ ë…¸ë“œ ë‹¨ì–´ë¥¼ ì…ë ¥ë°›ì•„ ì´ì§„íƒìƒ‰íŠ¸ë¦¬ì— ì‚½ì…
 	char word[50];
 	char meaning[100];
 	while (1) {
@@ -54,7 +54,7 @@ int main() {
 		fgets(meaning, 100, stdin);
 		root = insertNode(root, word, meaning);
 	}
-	// °Ë»öÇÒ ´Ü¾î¸¦ ÀÔ·Â¹Ş¾Æ ÀÌÁøÅ½»öÆ®¸®¿¡¼­ °Ë»ö
+	// ê²€ìƒ‰í•  ë‹¨ì–´ë¥¼ ì…ë ¥ë°›ì•„ ì´ì§„íƒìƒ‰íŠ¸ë¦¬ì—ì„œ ê²€ìƒ‰
 	while (1) {
 		printf("Enter word to search (type exit to stop): ");
 		scanf("%s", word);
