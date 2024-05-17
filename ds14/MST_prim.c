@@ -1,10 +1,10 @@
-#include<stdio.h> // prim's method to construct minimum cost spanning tree. ½ÃÀÛ Á¤Á¡¿¡¼­ ÁÖÀ§ÀÇ Á¤Á¡ Áß, °¡Àå ÀÛÀº °¡ÁßÄ¡ÀÇ °£¼±À» °®´Â Á¤Á¡À» ¿¬°á(Æ®¸® ±¸¼º). ±×¸®°í ±× Á¤Á¡¿¡¼­ ¶Ç ÃÖ¼ÒÀÇ ¿¬°á °¡ÁßÄ¡¸¦ °®´Â Á¤Á¡À» ¼±ÅÃ.  ÀÌÈÄ ¸ðµç Á¤Á¡ÀÌ ¿¬°áµÇµµ·Ï ¹Ýº¹.
-#define MAX_NODES 7 // n°³ÀÇ Á¤Á¡ÀÌ ÀÖÀ» ¶§, edge°¡ n-1°³¸¦ °¡Áú ¶§ ±îÁö ¹Ýº¹. 
+#include<stdio.h> // prim's method to construct minimum cost spanning tree. ì‹œìž‘ ì •ì ì—ì„œ ì£¼ìœ„ì˜ ì •ì  ì¤‘, ê°€ìž¥ ìž‘ì€ ê°€ì¤‘ì¹˜ì˜ ê°„ì„ ì„ ê°–ëŠ” ì •ì ì„ ì—°ê²°(íŠ¸ë¦¬ êµ¬ì„±). ê·¸ë¦¬ê³  ê·¸ ì •ì ì—ì„œ ë˜ ìµœì†Œì˜ ì—°ê²° ê°€ì¤‘ì¹˜ë¥¼ ê°–ëŠ” ì •ì ì„ ì„ íƒ.  ì´í›„ ëª¨ë“  ì •ì ì´ ì—°ê²°ë˜ë„ë¡ ë°˜ë³µ.
+#define MAX_NODES 7 // nê°œì˜ ì •ì ì´ ìžˆì„ ë•Œ, edgeê°€ n-1ê°œë¥¼ ê°€ì§ˆ ë•Œ ê¹Œì§€ ë°˜ë³µ. 
 #define MAX_INT 99999
 #define NOTDEF -1
 #define OUTOFQ -1
 
-int graph[MAX_NODES][MAX_NODES] = { // ¾ç¹æÇâ ¿¬°á ±×·¡ÇÁ ¹è¿­ Ç¥Çö.
+int graph[MAX_NODES][MAX_NODES] = { // ì–‘ë°©í–¥ ì—°ê²° ê·¸ëž˜í”„ ë°°ì—´ í‘œí˜„.
 	{ 0, 7, 0, 5, 0, 0, 0},// A in
 	{ 7, 0, 8, 9, 7, 0, 0},// B in
 	{ 0, 8, 0, 0, 5, 0, 0},// C in
@@ -14,8 +14,8 @@ int graph[MAX_NODES][MAX_NODES] = { // ¾ç¹æÇâ ¿¬°á ±×·¡ÇÁ ¹è¿­ Ç¥Çö.
 	{ 0, 0, 0, 0, 9,11, 0}// G in
 };
 
-int cost[MAX_NODES]; //°¢ °£¼±ÀÇ °¡ÁßÄ¡
-int parent[MAX_NODES];// ´ÙÀ½ Á¤Á¡À» Ã£À» ¶§, ÇØ´ç Á¤Á¡ÀÇ Á¤º¸.
+int cost[MAX_NODES]; //ê° ê°„ì„ ì˜ ê°€ì¤‘ì¹˜
+int parent[MAX_NODES];// ë‹¤ìŒ ì •ì ì„ ì°¾ì„ ë•Œ, í•´ë‹¹ ì •ì ì˜ ì •ë³´.
 int Q[MAX_NODES];
 int Qcount;
 
