@@ -52,14 +52,14 @@ int main()
 {
     ArrayListType A = { {1,2,3,4,5},5 };
     int pos, data;
-    printf("Ãß°¡ÇÒ À§Ä¡¿Í °ªÀ» ¾²½Ã¿À");
+    printf("ì¶”ê°€í•  ìœ„ì¹˜ì™€ ê°’ì„ ì“°ì‹œì˜¤");
     scanf("%d %d", &pos, &data);
     addlist(&A, data, pos);
     for (int i = 0; i < A.length; i++) {
         printf("%d ", A.list[i]);
     }
     printf("\n");
-    printf("»èÁ¦ÇÒ À§Ä¡¸¦ ¾²½Ã¿À");
+    printf("ì‚­ì œí•  ìœ„ì¹˜ë¥¼ ì“°ì‹œì˜¤");
     scanf("%d", &pos);
     int item = deletelist(&A, pos);
     printf("%d\n", item);
