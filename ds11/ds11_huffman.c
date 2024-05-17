@@ -25,7 +25,7 @@ void init(HeapType* h) {
 TreeNode* make_tree(TreeNode* left, TreeNode* right) {
 	TreeNode* node = (TreeNode*)malloc(sizeof(TreeNode));
 	if (node == NULL) {
-		fprintf(stderr, "¸Ş¸ğ¸®¿¡·¯\n");
+		fprintf(stderr, "ë©”ëª¨ë¦¬ì—ëŸ¬\n");
 		exit(1);
 	}
 	node->left_child = left;
@@ -55,15 +55,15 @@ void huffman_tree(int freq[], int n)
 		insert_min_heap(&heap, e);
 	}
 	for (i = 1; i < n; i++) {
-		// ÃÖ¼Ò°ªÀ» °¡Áö´Â µÎ°³ÀÇ ³ëµå¸¦ »èÁ¦
+		// ìµœì†Œê°’ì„ ê°€ì§€ëŠ” ë‘ê°œì˜ ë…¸ë“œë¥¼ ì‚­ì œ
 		e1 = delete_min_heap(&heap);
 		e2 = delete_min_heap(&heap);
-		// µÎ°³ÀÇ ³ëµå¸¦ ÇÕÄ£´Ù
+		// ë‘ê°œì˜ ë…¸ë“œë¥¼ í•©ì¹œë‹¤
 		x = make_tree(e1.ptree, e2.ptree);
 		e.key = x->weight = e1.key + e2.key;
 		e.ptree = x;
 		insert_min_heap(&heap, e);
 	}
-	e = delete_min_heap(&heap); // ÃÖÁ¾ Æ®¸®
+	e = delete_min_heap(&heap); // ìµœì¢… íŠ¸ë¦¬
 	destroy_tree(e.ptree);
 }
