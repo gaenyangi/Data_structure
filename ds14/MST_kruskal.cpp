@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS // ±×·¡ÇÁÀÇ ¸ğµç °£¼±À» ¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇÏ¿© ÀÛÀº °£¼± ºÎÅÍ ÇÏ³ª¾¿ ¼±ÅÃÇÏ´Â ¹æ¹ı. ÇØ´ç °£¼±ÀÌ »çÀÌÅ¬À» ÀÌ·çÁö ¾ÊÀ¸¸é ½ÅÀåÆ®¸®¿¡ ±¸¼º, ¾Æ´Ï¸é ´ÙÀ½ ÃÖ¼Ò °¡ÁßÄ¡¸¦ °®´Â °£¼±À¸·Î ÀÌµ¿. ¸¶Âù°¡Áö·Î n°³ÀÇ Á¤Á¡ÀÌ ÀÖÀ» ¶§ n-1°³ÀÇ °£¼±ÀÌ »ı±æ ¶§±îÁö ¹İº¹.
+#define _CRT_SECURE_NO_WARNINGS // ê·¸ë˜í”„ì˜ ëª¨ë“  ê°„ì„ ì„ ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬í•˜ì—¬ ì‘ì€ ê°„ì„  ë¶€í„° í•˜ë‚˜ì”© ì„ íƒí•˜ëŠ” ë°©ë²•. í•´ë‹¹ ê°„ì„ ì´ ì‚¬ì´í´ì„ ì´ë£¨ì§€ ì•Šìœ¼ë©´ ì‹ ì¥íŠ¸ë¦¬ì— êµ¬ì„±, ì•„ë‹ˆë©´ ë‹¤ìŒ ìµœì†Œ ê°€ì¤‘ì¹˜ë¥¼ ê°–ëŠ” ê°„ì„ ìœ¼ë¡œ ì´ë™. ë§ˆì°¬ê°€ì§€ë¡œ nê°œì˜ ì •ì ì´ ìˆì„ ë•Œ n-1ê°œì˜ ê°„ì„ ì´ ìƒê¸¸ ë•Œê¹Œì§€ ë°˜ë³µ.
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -8,8 +8,8 @@ int v = 6, parent[7];
 vector<p> edges;
 int find_root(int x) {
 	if (parent[x] == x) return x;
-	return parent[x] = find_root(parent[x]); //°æ·Î ¾Ğ
-	Ãà
+	return parent[x] = find_root(parent[x]); //ê²½ë¡œ ì••
+	ì¶•
 }
 void union_root(int x, int y) {
 	x = find_root(x);
@@ -20,17 +20,17 @@ vector<p> kruskal() {
 	vector<p> mst;
 	for (int i = 0; i < edges.size(); i++) {
 		p cur_edge = edges[i];
-		//ÇöÀç °£¼±ÀÌ ÀÕ´Â µÎ Á¤Á¡
+		//í˜„ì¬ ê°„ì„ ì´ ì‡ëŠ” ë‘ ì •ì 
 		int f = cur_edge.second.first;
 		int s = cur_edge.second.second;
-		//Union-Find·Î »çÀÌÅ¬ÀÌ ¹ß»ıÇÏ´ÂÁö È®ÀÎ
+		//Union-Findë¡œ ì‚¬ì´í´ì´ ë°œìƒí•˜ëŠ”ì§€ í™•ì¸
 		if (find_root(f) == find_root(s)) continue;
-		//»çÀÌÅ¬ÀÌ ¹ß»ıÇÑ´Ù¸é ¼±ÅÃÇÏÁö ¾ÊÀ½
-		//»çÀÌÅ¬ÀÌ ¹ß»ıÇÏÁö ¾Ê´Â´Ù¸é mst¿¡ ÇöÀç °£¼±À» Ãß°¡
+		//ì‚¬ì´í´ì´ ë°œìƒí•œë‹¤ë©´ ì„ íƒí•˜ì§€ ì•ŠìŒ
+		//ì‚¬ì´í´ì´ ë°œìƒí•˜ì§€ ì•ŠëŠ”ë‹¤ë©´ mstì— í˜„ì¬ ê°„ì„ ì„ ì¶”ê°€
 		mst.push_back(cur_edge);
-		//Parent °ü°è °»½Å
+		//Parent ê´€ê³„ ê°±ì‹ 
 		union_root(f, s);
-		//¸¸¾à Á¤Á¡ °³¼ö v¿¡ ´ëÇØ v - 1°³ÀÇ °£¼±À» Ã£¾Ò´Ù¸é Á¾·á
+		//ë§Œì•½ ì •ì  ê°œìˆ˜ vì— ëŒ€í•´ v - 1ê°œì˜ ê°„ì„ ì„ ì°¾ì•˜ë‹¤ë©´ ì¢…ë£Œ
 		if (mst.size() == v - 1) return mst;
 	}
 }
@@ -45,7 +45,7 @@ void init() {
 	edges.push_back({ 6, {3, 6} });
 	edges.push_back({ 2, {4, 5} });
 	edges.push_back({ 8, {4, 6} });
-	//°£¼±µéÀ» °¡ÁßÄ¡ ±âÁØ ¿À¸§Â÷¼ø Á¤·Ä
+	//ê°„ì„ ë“¤ì„ ê°€ì¤‘ì¹˜ ê¸°ì¤€ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬
 	sort(edges.begin(), edges.end());
 	//Union-Find Setting
 	for (int i = 1; i <= 6; i++) parent[i] = i;
@@ -58,7 +58,7 @@ int main() {
 	vector<p> mst = kruskal();
 	printf("[MST]\n");
 	for (int i = 0; i < mst.size(); i++) {
-		printf("%d - %d : ºñ¿ë %d\n", mst[i].second.first,
+		printf("%d - %d : ë¹„ìš© %d\n", mst[i].second.first,
 			mst[i].second.second, mst[i].first);
 	}
 	return 0;
