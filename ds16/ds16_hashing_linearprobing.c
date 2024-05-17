@@ -2,9 +2,9 @@
 #include<stdio.h>
 #define hash_mod 13
 
-//linear probingÀ» ÀÌ¿ëÇÑ coilision ÇØ°á
-//Ãæµ¹ÀÌ ÀÏ¾î³ª¸é ±× ´ÙÀ½ ÀÚ¸®¿¡ ÀúÀå. ¶Ç ÀÏ¾î³ª¸é ±×´ÙÀ½ ÀÚ¸®¿¡ ÀúÀå. ÀÌÇÏ ¹İº¹.
-// table size°¡ ÀüÃ¼¿¡ ºñÇØ ¸Å¿ì Å¬ ¶§ »ç¿ë.
+//linear probingì„ ì´ìš©í•œ coilision í•´ê²°
+//ì¶©ëŒì´ ì¼ì–´ë‚˜ë©´ ê·¸ ë‹¤ìŒ ìë¦¬ì— ì €ì¥. ë˜ ì¼ì–´ë‚˜ë©´ ê·¸ë‹¤ìŒ ìë¦¬ì— ì €ì¥. ì´í•˜ ë°˜ë³µ.
+// table sizeê°€ ì „ì²´ì— ë¹„í•´ ë§¤ìš° í´ ë•Œ ì‚¬ìš©.
 
 
 void insert(int table[], int key, int table_size) {
