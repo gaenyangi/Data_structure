@@ -1,13 +1,13 @@
-//¸ðµç Á¤Á¡½ÖÀÇ ÃÖ´Ü°æ·Î¸¦ ±¸ÇÏ´Â ¾Ë°í¸®Áò. ¾î¶² Á¤Á¡±îÁöÀÇ ÃÖ´Ü °Å¸®´Â ±×Àü Á¤Á¡À» °ÅÄ¡´Â °æ¿ì¿Í °ÅÄ¡Áö ¾Ê´Â °æ¿ì·Î ³ª´©¾îÁü.
-//µû¶ó¼­ 3Áß ¹Ýº¹À» ÅëÇØ ÇØ´ç Á¤Á¡±îÁöÀÇ ÃÖ´Ü °Å¸®¿Í / ±× Á÷Àü Á¤Á¡À» °ÅÄ¡´Â °æ¿ì¿Í °ÅÄ¡Áö ¾Ê´Â °æ¿ìÀÇ ÇÕÀ» ºñ±³ÇÏ¿© ÃÖ¼Ú°ª ¼­Ä¡
+//ëª¨ë“  ì •ì ìŒì˜ ìµœë‹¨ê²½ë¡œë¥¼ êµ¬í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜. ì–´ë–¤ ì •ì ê¹Œì§€ì˜ ìµœë‹¨ ê±°ë¦¬ëŠ” ê·¸ì „ ì •ì ì„ ê±°ì¹˜ëŠ” ê²½ìš°ì™€ ê±°ì¹˜ì§€ ì•ŠëŠ” ê²½ìš°ë¡œ ë‚˜ëˆ„ì–´ì§.
+//ë”°ë¼ì„œ 3ì¤‘ ë°˜ë³µì„ í†µí•´ í•´ë‹¹ ì •ì ê¹Œì§€ì˜ ìµœë‹¨ ê±°ë¦¬ì™€ / ê·¸ ì§ì „ ì •ì ì„ ê±°ì¹˜ëŠ” ê²½ìš°ì™€ ê±°ì¹˜ì§€ ì•ŠëŠ” ê²½ìš°ì˜ í•©ì„ ë¹„êµí•˜ì—¬ ìµœì†Ÿê°’ ì„œì¹˜
 
 #include<stdio.h>
 #include<limits.h>
-#define V 4 // Á¤Á¡ÀÇ °³¼ö
+#define V 4 // ì •ì ì˜ ê°œìˆ˜
 
-void floyd(int graph[][V]) { // ÃÊ±â »óÅÂ´Â ÀÎÁ¢ Çà·Ä, °£¼±ÀÇ ¿©ºÎ¿¡ µû¶ó °ª º¯°æ
-	int dist[V][V]; //ÃÖ´Ü °æ·Î ÀúÀå ¹è¿­
-	for (int i = 0; i < V; i++) // ÃÊ±âÈ­
+void floyd(int graph[][V]) { // ì´ˆê¸° ìƒíƒœëŠ” ì¸ì ‘ í–‰ë ¬, ê°„ì„ ì˜ ì—¬ë¶€ì— ë”°ë¼ ê°’ ë³€ê²½
+	int dist[V][V]; //ìµœë‹¨ ê²½ë¡œ ì €ìž¥ ë°°ì—´
+	for (int i = 0; i < V; i++) // ì´ˆê¸°í™”
 		for (int j = 0; j < V; j++)
 			dist[i][j] = graph[i][j];
 	for (int k = 0; k < V; k++) {
@@ -19,7 +19,7 @@ void floyd(int graph[][V]) { // ÃÊ±â »óÅÂ´Â ÀÎÁ¢ Çà·Ä, °£¼±ÀÇ ¿©ºÎ¿¡ µû¶ó °ª º¯°
 			}
 		}
 	}
-	printf("floyd ÃÖ´Ü °æ·Î °ª : \n");
+	printf("floyd ìµœë‹¨ ê²½ë¡œ ê°’ : \n");
 	for (int i = 0; i< V; i++) {
 		for (int j = 0; j < V; j++) {
 			if (dist[i][j] == INT_MAX) printf("INF ");
